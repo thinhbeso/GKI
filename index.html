@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio - TH!NH</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVBAR / BANNER -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <span class="brand-text">TH!NH</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certs">Certs</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-left">
+        <p class="hello">Hello, I'm</p>
+        <h1 class="name">Trương Huy Thịnh</h1>
+        <p class="role">Student &amp; Developer</p>
+        <p class="intro">
+          Information Technology student passionate about technology, like to explore and learn new things in the field of programming and software development.
+        <div class="hero-cta">
+          <a href="#projects" class="btn">Xem Dự Án</a>
+          <a href="#contact" class="btn btn-outline">Liên hệ</a>
+        </div>
+        <div class="stats">
+          <div><strong>3</strong><span>Years</span></div>
+          <div><strong>2+</strong><span>Projects</span></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- ảnh cá nhân -->
+        <div class="hero-photo-wrap">
+          <img src="image/profile.png" alt="Hình 1" class="hero-photo" />
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <!-- ABOUT / Thông tin cá nhân -->
+    <section id="about" class="section about">
+      <div class="container grid-2">
+        <div class="card about-card">
+          <h2>Personal information</h2>
+          <p><strong>Name:</strong> Trương Huy Thịnh</p>
+          <p><strong>Bỉthday:</strong> 20/11/2005</p>
+          <p><strong>Hobbies:</strong> sports, music and technology.</p>
+          <p><strong>Sector:</strong> Information technology </p>
+          <p class="objective"><strong>School:</strong> University of transport Hồ Chí Minh city </p>
+          <div class="personal-photos">
+            <img src="image/1.jpg" alt="photo1">
+            <img src="image/2.jpg" alt="photo2">
+            <img src="image/3.jpg" alt="photo3">
+            <img src="image/4.jpg" alt="photo4">
+          </div>
+        </div>
+
+        <div class="card profession-card">
+          <h2>experience &amp; skills</h2>
+          <p><strong>Languagues:</strong> Python,c++,HTML/CSS,SQL</p>
+            <div class="skill-bars">
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>Python</span><span>90%</span>
+                    </div>
+                    <div class="bar"><div class="bar-fill" data-percent="90%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>HTML/CSS</span><span>50%</span>
+                    </div>
+                    <div class="bar"><div class="bar-fill" data-percent="50%"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>SQL</span><span>40%</span>
+                    </div>
+                    <div class="bar"><div class="bar-fill" data-percent="40%"></div></div>
+                </div>
+                <div class= "skill">
+                    <div class="skill-info">
+                        <span>C++</span><span>70%</span>
+                    </div>
+                    <div class="bar"><div class="bar-fill" data-percent="70%"></div></div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- thêm script để tự đặt chiều rộng thanh theo data-percent -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.bar-fill').forEach(function(el){
+    var p = el.getAttribute('data-percent') || el.dataset.percent || '0';
+    p = String(p).trim();
+    if (!p.endsWith('%')) p = p + '%';
+    el.style.setProperty('--target-width', p);
+    // cập nhật nhãn phần trăm nếu có
+    var skill = el.closest('.skill');
+    if (skill) {
+      var spans = skill.querySelectorAll('.skill-info span');
+      if (spans.length > 1) spans[1].textContent = p;
+    }
+  });
+});
+</script>
+</body>
+</html>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <!-- project card -->
+          <article class="proj-card">
+            <div class="proj-thumb" style="background-image:url('image/chat1.png')"></div>
+            <div class="proj-body">
+              <h3>Ứng dụng chat chit</h3>
+              <p>A python app.</p>
+            </div>
+          </article>
+
+          <article class="proj-card">
+            <div class="proj-thumb" style="background-image:url('image/buakeobao.png')"></div>
+            <div class="proj-body">
+              <h3>Game Búa-Kéo-Bao </h3>
+              <p>game python.</p>
+            </div>
+          </article>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certs" class="section certs">
+      <div class="container">
+        <h2>Certificates &amp; Award</h2>
+          <div class="cert-item">
+            <img src="image/cer.png" alt="photo1">
+            <p>Right now i don't have any certificates or award yet, but i still learning and practice to take soon.</p>
+
+        </div>  
+           
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container grid-2">
+        <div class="card contact-card">
+          <h2>Contact</h2>
+          <p>GitHub, Facebook, Email<p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="thinhth9822@ut.edu.vn">thinhth9822@ut.edu.vn</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/thinhbeso" target="_blank">github.com/thinhbeso</a></li>
+            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/thinh.truonghuy.52/" target="_blank">www.facebook.com/thinh.truonghuy.52/</a></li>
+          </ul>
+        </div>
+
+        <form class="card contact-form" onsubmit="submitContact(event)">
+          <h3>Send message</h3> 
+          <label>
+            <span>Name</span>
+            <input type="text" id="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" id="email" required />
+          </label>
+          <label>
+            <span>Content</span>
+            <textarea id="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Trương Huy Thịnh. Build with passion.</p>
+      </div>
+    </footer>
+  </main>
+
+
+</body>
+</html>
+
+
+
+
