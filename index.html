@@ -18,7 +18,7 @@
       </div>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certs">Certs</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -196,8 +196,15 @@ document.addEventListener('DOMContentLoaded', function () {
     </footer>
   </main>
 </body>
+<script>
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
+  document.body.style.setProperty("--x", `${x}%`);
+  document.body.style.setProperty("--y", `${y}%`);
+});
+</script>
 </html>
-
 
 
 
