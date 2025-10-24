@@ -307,71 +307,73 @@ h2{font-size:22px;margin:0 0 12px}
   to { opacity:1; transform:none; }
 }
 /* ---------- Hiệu ứng nền động ---------- */
-/* Nền tối với các điểm sáng mờ */
 body {
   background-color: #020617;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(31,182,255,0.08), transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(31,182,255,0.06), transparent 60%);
+    radial-gradient(circle at 15% 25%, rgba(31,182,255,0.07), transparent 60%),
+    radial-gradient(circle at 85% 80%, rgba(31,182,255,0.05), transparent 60%),
+    linear-gradient(180deg, #020617 0%, #041529 100%);
   background-attachment: fixed;
+  background-size: 180% 180%;
+  animation: moveGlow 18s ease-in-out infinite;
   color: #e0e0e0;
+  overflow-x: hidden;
 }
-/* Hiệu ứng chuyển động nền */
+
 @keyframes moveGlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-body {
-  animation: moveGlow 20s ease-in-out infinite;
-  background-size: 200% 200%;
-}
-/*Ánh sáng trôi nhẹ toàn trang */
+
+/* ---------- Ánh sáng di chuyển theo chuột ---------- */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   pointer-events: none;
-  background: radial-gradient(circle at var(--x, 40%) var(--y, 60%), rgba(0,180,255,0.12), transparent 60%);
-  animation: driftLight 16s infinite alternate ease-in-out;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+    rgba(0, 200, 255, 0.25),
+    rgba(0, 120, 255, 0.1),
+    transparent 70%);
+  mix-blend-mode: screen; /* tăng hiệu ứng ánh sáng hòa vào nền */
+  animation: driftLight 18s infinite alternate ease-in-out;
   z-index: 0;
 }
-@keyframes driftLight {
-  0% { --x: 20%; --y: 30%; }
-  50% { --x: 80%; --y: 70%; }
-  100% { --x: 40%; --y: 90%; }
-}
-/*Hiệu ứng hover phát sáng cho thẻ */
+/* Hiệu ứng ánh sáng di chuyển mượt */
 .card, .proj-card, .contact-card, .cert-item {
   position: relative;
   z-index: 1;
   transition: box-shadow 0.4s ease, transform 0.4s ease, border 0.4s ease;
 }
 .card:hover, .proj-card:hover, .contact-card:hover, .cert-item:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 35px rgba(0, 200, 255, 0.3);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 200, 255, 0.35);
   border-color: rgba(0,200,255,0.3);
 }
-/*  Hiệu ứng ánh sáng lướt trên nút */
+/* ---------- Nút bấm với hiệu ứng ánh sáng lướt ---------- */
 .btn {
   position: relative;
   overflow: hidden;
+  z-index: 2;
+  transition: transform 0.3s ease;
 }
 .btn::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: -150%;
-  width: 300%;
-  height: 100%;
+  top: 0; left: -150%;
+  width: 300%; height: 100%;
   background: linear-gradient(120deg, transparent, rgba(0,255,255,0.4), transparent);
   transition: all 0.8s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
 }
 .btn:hover::after {
   left: 150%;
 }
-/* Hiệu ứng gạch chân phát sáng cho tiêu đề */
+/* ---------- Hiệu ứng gạch chân phát sáng cho tiêu đề ---------- */
 h2 {
   position: relative;
   z-index: 2;
@@ -390,8 +392,23 @@ h2::after {
   from { opacity: 0.5; width: 40px; }
   to { opacity: 1; width: 80px; }
 }
-
-
-
+/* ---------- Hiệu ứng chớp sáng logo-dot ---------- */
+.logo-dot {
+  box-shadow: 0 0 20px rgba(31,182,255,0.6),
+              0 0 40px rgba(31,182,255,0.3);
+  animation: pulse 2.5s infinite ease-in-out;
+}
+/* ---------- Section xuất hiện mượt khi cuộn ---------- */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 
